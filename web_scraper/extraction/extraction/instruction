@@ -1,0 +1,6 @@
+se placer dans :
+.../extraction
+
+entrer la commande :
+
+scrapy crawl -s MONGODB_URI="mongodb://localhost:27017" -s MONGODB_DATABASE="auchan" Auchan

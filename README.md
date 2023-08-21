@@ -4,7 +4,7 @@
 
 This repository includes the first part of my second-year internship at ENSAE (National School of Statistics and Economic Administration), which I carried out at INRAE (National Research Institute for Agriculture, Food and the Environment) over a 1-month period.
 
-The subject is the automation and enrichment with web-crwling and web-scraping tools of a database that is maintained and fed by hand by a team of 7 people. This is the first time INRAE has used these algorithms.
+The subject is the automation and enrichment with web-crawling and web-scraping tools of a database that is maintained and fed by hand by a team of 7 people. This is the first time INRAE has used these algorithms.
 
 WARNING: Web scraping is illegal and what was done in this project must not be reproduced. However, in the context of my internship at a research institute, Web Scraping is legal. I am therefore sharing the content of my code to help other research institutes and not to encourage illegal Web scraping.
 
@@ -87,11 +87,18 @@ As the sites have different structures, this section lists the various structure
 #### Various safety features
 
 To access the site with Scrapy, there may be various problems linked to protections on certain site :
+
 - DataDome
+
 Detect and mitigate bot attacks and online fraud with unrivalled accuracy and without compromise. Deployment in minutes. No impact on user experience.
+
 - Headers 
+
 To browse certain sites, you need to fill in headers or identify yourself. Solutions are available with Scrapy.
-–	Autres protections 
+
+–	Other protections
+
+Other protections, such as query frequency, URL relocation and browsing the site without an item in the shopping cart, have been implemented on certain sites.
 
 #### Solutions
 
@@ -133,6 +140,36 @@ The solution was to find the pattern for obtaining the URLs by looking at the UR
 
 ### Conclusion
 
+This project enabled us to scrape the entire Auchan and Franprix sites, and is replicable to other major chains by changing certain parts of the code.
+Here's a table showing the different results obtained:
+
+|  | #Total number of urls   | #URLs retrieved with data   | #Missing urls   | #Recovery rates   | 
+| :---:   | :---: | :---: | :---: | :---: |
+| Auchan | 24005   | 20334   | 3671   | 84,71%   |
+| Franprix | 13626   | 9126   | 4500   | 66,97%   |
+
+We can see that the recovery rate isn't 100%, due to the fact that some URLs have been moved or don't contain all the information, so Scrapy can't scrape them.
+
+
 ## V) How to use the project
 
+### To select Auchan or Franprix
 
+You need to modify the .env file in which you can comment out the Auchan part or the Franprix part, depending on the site you want to scrape.
+
+### Via Docker
+
+Image construction:
+
+	- docker build --file web_crawler/DockerFile -t web_crawler .
+
+Docker container creation with:
+	
+	- docker run --name auchan -v [path_local]:/crawler/log  web_crawler ./start_.sh
+
+### Via sources
+
+To run the program :
+
+	- place in the first url branch (ex : cd .//src/web_crawler/url)
+	- Enter : scrapy crawl url --logfile laph.log -o laph.jl -t jsonlines

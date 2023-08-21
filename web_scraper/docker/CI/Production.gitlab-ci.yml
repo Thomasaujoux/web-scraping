@@ -1,0 +1,85 @@
+.production_helpers: &production_helpers |
+  [[ "$TRACE" ]] && set -x
+  docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+
+  function export_docker_image() {
+    if [[ -z "$CI_COMMIT_TAG" ]]; then
+      export CI_APPLICATION_REPOSITORY=${CI_APPLICATION_REPOSITORY:-$CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG}
+      export CI_APPLICATION_TAG=${CI_APPLICATION_TAG:-$CI_COMMIT_SHA}
+    else
+      export CI_APPLICATION_REPOSITORY=${CI_APPLICATION_REPOSITORY:-$CI_REGISTRY_IMAGE}
+      export CI_APPLICATION_TAG=${CI_APPLICATION_TAG:-$CI_COMMIT_TAG}
+    fi
+  }
+
+  function mount_external() {
+
+        mkdir $CI_PROJECT_DIR/mnt
+        mount -t cifs -v "//${SHARE_POINT_IP}/${SHARE_POINT}" $CI_PROJECT_DIR/mnt -o user=$WINDOWS_USER,password=$WINDOWS_PASSWORD,domain=inra,uid=$(id -u),gid=$(id -g),forceuid,forcegid
+        mkdir $CI_PROJECT_DIR/mnt/$CI_JOB_ID
+        chmod a+xwr $CI_PROJECT_DIR/mnt/$CI_JOB_ID
+        
+  }
+
+  
+  function run() {
+  
+    RUN_SCRIPT=$1
+    
+    mkdir log
+    chmod a+xwr log
+    
+    shift
+    
+    docker run \
+    --network=host \
+    -v $CI_PROJECT_DIR/log:/crawler/log \
+    --name scrap \
+    -d \
+    $CI_APPLICATION_REPOSITORY:$CI_APPLICATION_TAG
+    
+    docker exec -t scrap ./start.sh   
+    
+    docker exec -t scrap bash -c "mongoexport --collection=scrapy_items --db=Distributeur --out=/crawler/log/distributeur.json"
+    
+    docker exec -t scrap bash -c "cp /global/global/log*.txt /crawler/log"
+
+    cp -r $CI_PROJECT_DIR/log/* $CI_PROJECT_DIR/mnt/$CI_JOB_ID/.
+    
+  }
+
+
+.production: &production_template
+  image: docker
+  services:
+    - name: docker:dind 
+      entrypoint: ["dockerd-entrypoint.sh", "--tls=false"]
+      alias: dockerhost
+  before_script:
+    - *production_helpers
+  variables:
+    # CI_DEBUG_TRACE: "true"
+    DOCKER_DRIVER: overlay
+    DOCKER_HOST: tcp://dockerhost:2375
+    DOCKER_TLS_CERTDIR: ""
+  #artifacts:
+  #  expire_in: 1 year
+  #  name: "result-files"
+  #  when: always
+  #  paths:
+  #    - log/
+   
+scrapping:
+  <<: *production_template
+  stage: production
+  script:
+    - export_docker_image
+    - mount_external
+    - run ""
+  only:
+    refs: 
+      - multiprocess
+    variables: 
+      - $START_SCRAPING
+
+
