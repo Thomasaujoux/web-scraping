@@ -173,3 +173,17 @@ To run the program :
 
 	- place in the first url branch (ex : cd .//src/web_crawler/url)
 	- Enter : scrapy crawl url --logfile laph.log -o laph.jl -t jsonlines
+
+### Wiki
+
+To understand better how to use the project, you can see the Wiki
+
+## VI) Future of the project
+
+### Idea to improve the project
+
+Security :
+The security of the different websites can change anytime and there are many solutions to bypass security which can be find online.
+
+The headers :
+The headers can be a big issue in the future because some sites in order to be scraped require to put headers with the localisation and other informations.
