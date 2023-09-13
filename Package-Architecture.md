@@ -17,3 +17,5 @@
             ├── spiders/
             │   └── spyder.py <- The spyder to crawl the data
             └── utils.py <- To change user agent
+
+## How is it working ?
