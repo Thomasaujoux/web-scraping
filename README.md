@@ -70,7 +70,7 @@ This project was carried out in two parts:
 
 Thereafter, I'll explain only the first part in detail, the second part using the same techniques and adding nothing new.
 
-[This document]([Package-Architecture.md](https://github.com/Thomasaujoux/web-scraping/blob/main/Package-Architecture.md)) explains the project hierarchy in more detail
+[This document](https://github.com/Thomasaujoux/web-scraping/blob/main/Package-Architecture.md) explains the project hierarchy in more detail
 
 ## IV) The project
 
