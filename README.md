@@ -8,8 +8,6 @@ The subject is the automation and enrichment with web-crawling and web-scraping 
 
 WARNING: Web scraping is illegal and what was done in this project must not be reproduced. However, in the context of my internship at a research institute, Web Scraping is legal. I am therefore sharing the content of my code to help other research institutes and not to encourage illegal Web scraping.
 
-[new](news)
-
 ## II) Context 
 
 ### Oqali
@@ -64,7 +62,7 @@ This part of the internship is a first for INRAE, which would like to automate t
 Python is an interpreted, multi-paradigm, multi-platform programming language. It has the advantage of custom libraries, such as Scrapy, widely used in Web-scraping. The language has extensive documentation and a large community on the Internet, making it an invaluable resource in case of bugs or questions. The working environment was Visual Studio Code, a free, open source Python distribution dedicated to data science. We used a template called CookieCutter to organize the code according to the stages of our algorithm. Scrapy is a free Python library for Web-Scrawling and Web-Scraping.
 
 
-### Project hierarchy
+## IV) Project hierarchy
 
 This project was carried out in two parts:
 - The first involved web crawling of all Auchan and Franprix sites. The aim was to use a single URL https://www.auchan.fr/ or https://www.franprix.fr/ to retrieve all the product URLs present on the site.
@@ -72,7 +70,7 @@ This project was carried out in two parts:
 
 Thereafter, I'll explain only the first part in detail, the second part using the same techniques and adding nothing new.
 
-
+[This document](Package-Architecture) explains the project hierarchy in more detail
 
 ## IV) The project
 
