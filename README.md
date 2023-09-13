@@ -1,4 +1,4 @@
-# web-scraping
+# Automated retrieval of information on food products using web-scraping
 
 ## I) General Presentation
 
