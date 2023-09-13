@@ -74,6 +74,8 @@ Thereafter, I'll explain only the first part in detail, the second part using th
 
 ## IV) The project
 
+[This document]((https://github.com/Thomasaujoux/web-scraping/blob/main/Model-Documentation.md) explains the different concepts you need to know before modifying the project.
+
 ### Database analysis
 
 The algorithm I have written scrapes data from France's biggest supermarkets, such as Auchan, Franprix, Cora and Leclerc. Thanks to it, we can obtain information on all the food products in these stores, such as: name, price, quantity, barcode, manufacturer, claim, label, shelf life, preparation advice, nutritional values, ingredients, seasonality, origin, location and legal name.
