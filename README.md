@@ -8,7 +8,7 @@ The subject is the automation and enrichment with web-crawling and web-scraping 
 
 WARNING: Web scraping is illegal and what was done in this project must not be reproduced. However, in the context of my internship at a research institute, Web Scraping is legal. I am therefore sharing the content of my code to help other research institutes and not to encourage illegal Web scraping.
 
-
+[new](news)
 
 ## II) Context 
 
