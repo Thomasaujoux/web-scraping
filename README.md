@@ -1,5 +1,9 @@
 # Automated retrieval of information on food products using web-scraping
 
+<p align="center">
+<img src='pictures/Capture d’écran 2023-09-14 112231.png' alt="banner"></img>
+</p>
+
 ## I) General Presentation
 
 This repository includes the first part of my second-year internship at ENSAE (National School of Statistics and Economic Administration), which I carried out at INRAE (National Research Institute for Agriculture, Food and the Environment) over a 1-month period.
