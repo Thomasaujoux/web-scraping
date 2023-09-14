@@ -20,7 +20,7 @@ Detect and mitigate bot attacks and online fraud with unrivalled accuracy and wi
 
 To browse certain sites, you need to fill in headers or identify yourself. Solutions are available with Scrapy.
 
-–	Other protections
+- Other protections
 
 Other protections, such as query frequency, URL relocation and browsing the site without an item in the shopping cart, have been implemented on certain sites.
 
