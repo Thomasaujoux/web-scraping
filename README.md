@@ -86,24 +86,41 @@ The first thing to do is find out about the Scrapy python library, on which most
 
 You need to modify the .env file in which you can comment out the Auchan part or the Franprix part, depending on the site you want to scrape.
 
-*PAGE* = This variable designs Will probably stay the same for all food stores
+*PAGE* = This variable is used to filter URLs and determine whether the URL is page number 2, 3, etc. The programme treats this type of page differently to others, which allows efficient management of data processing. The algorithm will directly take the information from this page and look to see if there is a next page or not. To change this variable, all you have to do is look at the URLs of the site you want to scrape to see how the term page is written to indicate which page you are on. This variable will probably remain the same for the different sites.
 
-### Via Docker
+*PRODUCTS* = This variable is used to filter URLs and determine whether the URL is a food product. The programme treats this type of page differently to others, which allows efficient data processing management. The algorithm will directly take the information from this page and will not process the URLs present on this page. To change this variable, all you have to do is look at the URLs of the site you want to scrape to see how the term is written to indicate that you are on a product URL. This variable will probably change for the different sites.
 
-Image construction:
+*ALLOWEDDOMAINS* = Cette variable correspond au nom de domaine du site que vous voulez scraper. Elle va donc changer en fonction du site et est facilement remplacable.
 
-	- docker build --file web_crawler/DockerFile -t web_crawler .
+*STARTURLS* = *BASEURL* = This variable corresponds to the URL at which you want to start scraping. The two variables are not necessarily equal depending on the context, but it is good practice to set the two variables equal. A good way of using this variable is to position it on the first URL of the site, i.e. the main URL because the other URL will be filtered thanks toother variables.
 
-Docker container creation with:
-	
-	- docker run --name auchan -v [path_local]:/crawler/log  web_crawler ./start_.sh
+*RAYONS* = This variable is used to filter URLs and determine whether the URL is a radius. The program treats this type of page differently to others, which allows efficient management of data processing. The algorithm will only process radius URLs and for data storage. In fact, in terms of data management, the algorithm will only decide to keep the URLs present on this type of page. To change this variable, all you have to do is look at the URLs of the site you want to scrape to see how the term is written to indicate that you are on a spoke URL. This variable will probably change for the different sites.
 
-### Via sources
+*TAGS* = This variable is used to identify patterns in the HTML code that can be used to determine whether the information is a URL. To do this, it is necessary to identify tags for both food products and links for category pages. A simple way of using it is to find the tag that concerns all the URLs on the site and the algorithm will process the rest by itself.
 
-To run the program :
+### How to use this project locally?
 
-	- place in the first url branch (ex : cd .//src/web_crawler/url)
-	- Enter : scrapy crawl url --logfile laph.log -o laph.jl -t jsonlines
+1. Download this repository
+
+2. Change the .env file by passing into commentary the food store you don't want to scrape
+
+3. Go to the folder of the project called "web-scraping"
+
+4. Run the image construction :
+
+```bash
+docker build --file web_crawler/DockerFile -t web_crawler .
+```
+
+5. Create the container :
+
+```bash
+docker run --name [name_of_the_food_store] -v [path_local]:/crawler/log  web_crawler ./start_.sh
+```
+
+6. End the run of the container
+
+7. Look in the **.log** and **.jl** file to see the result.
 
 ### Wiki
 
