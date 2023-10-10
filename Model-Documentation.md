@@ -2,7 +2,7 @@
 
 ## Database analysis
 
-The algorithm I have written scrapes data from France's biggest supermarkets, such as Auchan, Franprix, Cora and Leclerc. Thanks to it, we can obtain information on all the food products in these stores, such as: name, price, quantity, barcode, manufacturer, claim, label, shelf life, preparation advice, nutritional values, ingredients, seasonality, origin, location and legal name.
+The algorithm I have written scrapes data from France's biggest supermarkets. Thanks to it, we can obtain information on all the food products in these stores, such as: name, price, quantity, barcode, manufacturer, claim, label, shelf life, preparation advice, nutritional values, ingredients, seasonality, origin, location and legal name.
 
 As the sites have different structures, this section lists the various structures observed and the associated solutions.
 

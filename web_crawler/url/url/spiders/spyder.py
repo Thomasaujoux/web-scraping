@@ -79,7 +79,6 @@ class myCrawler(CrawlSpider): # Le nom de la classe qui hérite doit être diff�
     name = 'url'
     """
     On restraint le crawling à certains domaines
-    CETTE PARTIE EST A CHANGER EN FONCTION DU SITE (on aurait pu tout mettre dans la liste mais par sécurité il vaut mieux directement changer, certains sites sont liés à d'autres par exemple franprix et monoprix)
     """
     allowed_domains = [ALLOWEDDOMAINS]
     """
@@ -123,7 +122,6 @@ class myCrawler(CrawlSpider): # Le nom de la classe qui hérite doit être diff�
     """
     rules = (
         Rule(
-            # Quels sont les liens que nous allons extraire différent entre Auchan et Franprix, ICI ON ENLEVE LE LINK CAR ON PREND DEJA LES LIENS DES PAGES NEXT
             LinkExtractor(allow_domains=ALLOWEDDOMAINS, allow = RAYONS, tags= ("link","a", "area")),
             # Renvoie à notre fonction discutée précédemment
             process_links=process_links,

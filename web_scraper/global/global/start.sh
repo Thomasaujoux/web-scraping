@@ -1,6 +1,0 @@
-#!/usr/bin/bash
-#scrapy crawl -a urls=$(pwd)/urlsAuchan4 -a rayons=$(pwd)/rayonsAuchan -a params='{"auchan": { "nbrayons": 2, "selecteur": "nav.site-breadcrumb__nav a::text"}}' -s MONGODB_URI="mongodb://localhost:27017" -s MONGODB_DATABASE="Distributeur" Distributeur
-#scrapy crawl -a urls=$(pwd)/urlsAuchan2 -a rayons=$(pwd)/rayonsAuchan -a params='{"auchan": { "nbrayons": 2, "selecteur": "nav.site-breadcrumb__nav a::text"}}' -s MONGODB_URI="mongodb://localhost:27017" -s MONGODB_DATABASE="Distributeur" Distributeur &
-#scrapy crawl -a urls=$(pwd)/urlsAuchan3 -a rayons=$(pwd)/rayonsAuchan -a params='{"auchan": { "nbrayons": 2, "selecteur": "nav.site-breadcrumb__nav a::text"}}' -s MONGODB_URI="mongodb://localhost:27017" -s MONGODB_DATABASE="Distributeur" Distributeur 
-#scrapy crawl -a urls=$(pwd)/urlsFranprix1 -a rayons=$(pwd)/rayonsFranprix -a params='{"franprix": { "nbrayons": 3, "selecteur": "ul.breadcrumb.mobile-container-x.mb-6 li a::text"}}' -s MONGODB_URI="mongodb://localhost:27017" -s MONGODB_DATABASE="Distributeur" Distributeur &
-scrapy crawl -a urls=$(pwd)/urlsFranprix4 -a rayons=$(pwd)/rayonsFranprix -a params='{"franprix": { "nbrayons": 3, "selecteur": "ul.breadcrumb.mobile-container-x.mb-6 li a::text"}}' -s MONGODB_URI="mongodb://localhost:27017" -s MONGODB_DATABASE="Distributeur" Distributeur

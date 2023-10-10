@@ -69,7 +69,7 @@ Python is an interpreted, multi-paradigm, multi-platform programming language. I
 ## IV) Project hierarchy
 
 This project was carried out in two parts:
-- The first involved web crawling of all Auchan and Franprix sites. The aim was to use a single URL https://www.auchan.fr/ or https://www.franprix.fr/ to retrieve all the product URLs present on the site.
+- The first involved web crawling of all sites. 
 - The second part concerns web scraping, in which from this list including all product URLs I'll retrieve all useful product information (Name, Price, Ingredients, Nutritional information, etc.).
 
 Thereafter, I'll explain only the first part in detail, the second part using the same techniques and adding nothing new.
@@ -88,7 +88,7 @@ The first thing to do is find out about the Scrapy python library, on which most
 
 ### How to change the .env file?
 
-You need to modify the .env file in which you can comment out the Auchan part or the Franprix part, depending on the site you want to scrape.
+You need to modify the .env file in which you can comment out, depending on the site you want to scrape.
 
 *PAGE* = This variable is used to filter URLs and determine whether the URL is page number 2, 3, etc. The programme treats this type of page differently to others, which allows efficient management of data processing. The algorithm will directly take the information from this page and look to see if there is a next page or not. To change this variable, all you have to do is look at the URLs of the site you want to scrape to see how the term page is written to indicate which page you are on. This variable will probably remain the same for the different sites.
 
@@ -132,31 +132,19 @@ To understand better how to use the project, you can see [the Wiki](https://gith
 
 ## V) Conclusion
 
-This project enabled us to scrape the entire Auchan and Franprix sites, and is replicable to other major chains by changing certain parts of the code.
+This project enabled us to scrape the entire sites, and is replicable to other major chains by changing certain parts of the code.
 Here's a table showing the different results obtained:
 
 |  | Total number of urls   | URLs retrieved with data   | Missing urls   | Recovery rates   | 
 | :---:   | :---: | :---: | :---: | :---: |
-| Auchan | 24005   | 20334   | 3671   | 84,71%   |
-| Franprix | 13626   | 9126   | 4500   | 66,97%   |
+| Site 1 | 24005   | 20334   | 3671   | 84,71%   |
+| Site 2 | 13626   | 9126   | 4500   | 66,97%   |
 
 We can see that the recovery rate isn't 100%, due to the fact that some URLs have been moved or don't contain all the information, so Scrapy can't scrape them.
 
-We will now analyse the statistics of one company, here it will be Auchan
+We will now analyse the statistics of one company, here it will be Site 1
 
-|   id   | Count | 
-| :---:   | :---: |
-| Epicerie sucrée | 4637   | 
-| Epicerie salée | 4529   | 
-| Charcuterie, traiteur, pain | 3622   | 
-| Produits laitiers, oeufs, fromages  | 2929   | 
-| Vins, bières, alcools  | 2926   | 
-| Surgelés | 1524   | 
-| Boucherie, volaille, poissonnerie | 1501   | 
-| Eaux, jus, soda, thés glacés | 1303    | 
-| Fruits, légumes | 948   | 
-| Produits du monde et de nos régions  | 13  | 
-| Total  | 23954  | 
+
 
 We can describe these results by making some interesting observations. Firstly, the fact that there is a huge amount of data compared to the number of sectors to be classified, which will enable us to obtain statistically justifiable results. Another problem is that the number of products is not at all the same depending on the sector, which poses a problem of imbalanced dataset. We will come back to these different elements later in the report.
 
