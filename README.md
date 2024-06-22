@@ -10,8 +10,6 @@ This repository includes the first part of my second-year internship at ENSAE (N
 
 The subject is the automation and enrichment with web-crawling and web-scraping tools of a database that is maintained and fed by hand by a team of 7 people. This is the first time INRAE has used these algorithms.
 
-WARNING: Web scraping is illegal and what was done in this project must not be reproduced. However, in the context of my internship at a research institute, Web Scraping is legal. I am therefore sharing the content of my code to help other research institutes and not to encourage illegal Web scraping.
-
 ## II) Context 
 
 ### Oqali
